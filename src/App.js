@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router , Route, Switch } from 'react-router-dom'
 import './App.css';
-import { Home , About, Contact, NestedUser, Users , Header} from './components'
+import { Home , About, Contact, NestedUser, Users , CenteredTabs, SignInSide, SignUp} from './components'
 
 function App() {
   return (
     <Router>
-      <div>
-        <Header />
-        
+        <CenteredTabs />
         <Switch>
           <Route path="/about" >
             <About />
@@ -25,8 +23,13 @@ function App() {
           <Route path="/user/:name">
             <NestedUser />
           </Route>
+          <Route path="/signin" >
+            <SignInSide />
+          </Route>
+          <Route path="/signup" >
+            <SignUp />
+          </Route>
         </Switch>
-      </div>
     </Router>
   );
 }
