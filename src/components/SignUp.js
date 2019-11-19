@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { withRouter } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -53,8 +54,29 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function SignUp() {
+function SignUp(props) {
     const classes = useStyles();
+    const [signUp, setSignUp] = React.useState({
+        firstname: "",
+        lastname: "",
+        email: "", 
+        password: "" 
+        });
+
+    const handleSubmit = event => {
+        // event.preventDefault()
+
+        localStorage.setItem("user", JSON.stringify(signUp))
+        // props.history.push("/signin")
+        alert("Silahkan coba Log In")
+    }
+
+    const handleChange = event => {
+        setSignUp({
+            ...signUp,
+            [event.target.name]: event.target.value
+        })
+    }
 
     return (
     <Container component="main" maxWidth="xs">
@@ -65,7 +87,11 @@ export default function SignUp() {
             </Avatar>
             <Typography component="h1" variant="h5">Sign up</Typography>
         
-        <form className={classes.form} noValidate>
+        <form 
+        className={classes.form} 
+        noValidate
+        onSubmit={event => handleSubmit(event)}
+        >
             <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
             <TextField
@@ -77,6 +103,8 @@ export default function SignUp() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                defaultValue={signUp.firstName}
+                onChange={handleChange}
             />
             </Grid>
 
@@ -89,6 +117,8 @@ export default function SignUp() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                defaultValue={signUp.lastName}
+                onChange={handleChange}
                 />
             </Grid>
 
@@ -101,6 +131,8 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                defaultValue={signUp.email}
+                onChange={handleChange}
                 />
             </Grid>
 
@@ -114,6 +146,8 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                defaultValue={signUp.password}
+                onChange={handleChange}
                 />
             </Grid>
 
@@ -143,3 +177,8 @@ export default function SignUp() {
             </Container>
 );
 }
+
+export default withRouter(SignUp);
+
+
+// ===============================================

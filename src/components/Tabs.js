@@ -28,11 +28,11 @@ return (
         textColor="primary"
         centered
     >
+        <Tab label="Sign In" component={Link} to="/signin" />
+        <Tab label="Sign Up" component={Link} to="/signup" />
         <Tab label="Home" component={Link} to="/" />
         <Tab label="Contact" component={Link} to="/contact" />
         <Tab label="About" component={Link} to="/about"  />
-        <Tab label="Sign Up" component={Link} to="/signup" />
-        <Tab label="Sign In" component={Link} to="/signin" />
     </Tabs>
     </Paper>
 );
