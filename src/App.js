@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router , Route, Switch } from 'react-router-dom'
 import './App.css';
-import { Home , About, Contact, NestedUser, Users , CenteredTabs, SignInSide, SignUp} from './components'
+import { Home , About, User, NestedUser, Users , CenteredTabs, SignInSide, SignUp} from './components'
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
           <Route path="/about" >
             <About />
           </Route>
-          <Route path="/contact" >
-            <Contact />
+          <Route path="/user" >
+            <User />
           </Route>
           <Route path="/home" exact={true}>
             <Home />

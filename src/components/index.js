@@ -1,6 +1,6 @@
 export { default as Home } from './Home'
 export {default as About } from './About'
-export { default as Contact } from './Contact'
+export { default as User } from './User'
 export { default as Users } from './Users'
 export { default as NestedUser } from './NestedUser'
 export { default as SearchAppBar } from './Nav'

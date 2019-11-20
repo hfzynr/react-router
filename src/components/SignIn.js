@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router-dom";
+import swal from 'sweetalert'
 
 function Copyright() {
     return (
@@ -66,7 +67,10 @@ function SignInSide(props) {
             localStorage.setItem("isLogin", JSON.stringify(true));
             if (JSON.parse(localStorage.getItem("isLogin"))) {
                 props.history.push("/home");
-                alert("Anda sukses login")
+                swal({
+                    title: 'Anda Sukses Login',
+                    icon: 'success'
+                })
             }
         } else {
             alert("email atau password salah");

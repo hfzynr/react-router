@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { Link } from 'react-router-dom'
+import swal from 'sweetalert'
 
 const useStyles = makeStyles({
     root: {
@@ -20,7 +21,10 @@ const handleChange = (event, newValue) => {
 };
 const logOut = () => {
     localStorage.removeItem("isLogin");
-    alert("Anda sukses Logout")
+    swal({
+        title: 'Anda Sukses Log Out',
+        icon: 'success'
+    })
 };
 
 
@@ -34,7 +38,7 @@ return (
         centered
     >
         <Tab label="Home" component={Link} to="/home" />
-        <Tab label="Contact" component={Link} to="/contact" />
+        <Tab label="User" component={Link} to="/user" />
         <Tab label="About" component={Link} to="/about"  />
         <Tab label="Log Out" component={Link} to="/signup" onClick={logOut}/>
     </Tabs>
