@@ -20,6 +20,7 @@ const handleChange = (event, newValue) => {
 };
 const logOut = () => {
     localStorage.removeItem("isLogin");
+    alert("Anda sukses Logout")
 };
 
 
