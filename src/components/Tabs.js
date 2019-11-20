@@ -1,39 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { Link } from 'react-router-dom'
+import React, { Fragment } from "react";
+import { withRouter } from "react-router-dom";
+import GuestTabs from "./member/Tabs";
+import MemberTabs from "./guest/Tabs";
 
-const useStyles = makeStyles({
-    root: {
-        flexGrow: 1,
-    },
-});
-
-export default function CenteredTabs() {
-const classes = useStyles();
-const [value, setValue] = React.useState(0);
-
-const handleChange = (event, newValue) => {
-    setValue(newValue);
-};
-
-return (
-    <Paper className={classes.root}>
-        <Tabs
-        value={value}
-        onChange={handleChange}
-        indicatorColor="primary"
-        textColor="primary"
-        centered
-    >
-        <Tab label="Sign In" component={Link} to="/signin" />
-        <Tab label="Sign Up" component={Link} to="/signup" />
-        <Tab label="Home" component={Link} to="/" />
-        <Tab label="Contact" component={Link} to="/contact" />
-        <Tab label="About" component={Link} to="/about"  />
-    </Tabs>
-    </Paper>
-);
+function Header() {
+    return (
+        <Fragment>
+            {JSON.parse(localStorage.getItem("isLogin")) !== true ? (
+                <MemberTabs />
+            ) : (
+                <GuestTabs />
+            )}
+        </Fragment>
+    );
 }
+
+export default withRouter(Header);

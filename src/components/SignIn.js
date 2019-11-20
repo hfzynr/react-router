@@ -65,7 +65,8 @@ function SignInSide(props) {
         if (user.email === state.email && user.password === state.password) {
             localStorage.setItem("isLogin", JSON.stringify(true));
             if (JSON.parse(localStorage.getItem("isLogin"))) {
-                props.history.push("/");
+                props.history.push("/home");
+                alert("Anda sukses login")
             }
         } else {
             alert("email atau password salah");
@@ -139,18 +140,6 @@ function SignInSide(props) {
                         >
                             Sign In
                         </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
                         <Box mt={5}>
                             <Copyright />
                         </Box>
