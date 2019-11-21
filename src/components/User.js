@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import CardActions from '@material-ui/core/CardActions'
 import Button from '@material-ui/core/Button'
 
+const API_PLACEHOLDER = process.env.REACT_APP_API_PLACEHOLDER
 export default class User extends Component {
 
     constructor(props) {
@@ -18,7 +19,7 @@ export default class User extends Component {
     
     componentDidMount = () => {
         Axios
-        .get('https://jsonplaceholder.typicode.com/users')
+        .get(`${API_PLACEHOLDER}/users`)
         .then(response => {
             this.setState({data: response.data })
         })
@@ -60,26 +61,3 @@ export default class User extends Component {
         )
     }
 }
-
-
-////////////////////////////////////////
-    // render() {
-    //     return (
-    //         <div>
-    //     {this.state.data.map((item, index) => {
-    //         return (
-    //             <div>
-    //                 <Card>
-    //                     <CardContent>
-    //                         <Typography>
-    //                             Kambing
-    //                         </Typography>
-    //                     </CardContent>
-    //                 </Card>
-    //             </div>
-    //         )
-    //     )}
-    // }
-    // </div>
-    // )
-    // }
