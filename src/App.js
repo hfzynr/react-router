@@ -14,7 +14,7 @@ function App() {
           <Route path="/user" >
             <User />
           </Route>
-          <Route path="/home" exact={true}>
+          <Route path="/home">
             <Home />
           </Route>
           <Route path="/user" exact={true}>
@@ -26,7 +26,7 @@ function App() {
           <Route path="/signin" >
             <SignInSide />
           </Route>
-          <Route path="/" >
+          <Route path="/"  exact={true} >
             <SignUp />
           </Route>
         </Switch>
