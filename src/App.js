@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router , Route, Switch } from 'react-router-dom'
 import './App.css';
-import { Home , About, User, NestedUser, Users , CenteredTabs, SignInSide, SignUp} from './components'
+import { Home , About, User , CenteredTabs, SignInSide, NestedUser, SignUp} from './components'
 
 function App() {
   return (
@@ -11,22 +11,19 @@ function App() {
           <Route path="/about" >
             <About />
           </Route>
-          <Route path="/user" >
+          <Route path="/user" exact={true}>
             <User />
           </Route>
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/user" exact={true}>
-            <Users />
-          </Route>
-          <Route path="/user/:name">
+          <Route path="/user/:id">
             <NestedUser />
           </Route>
           <Route path="/signin" >
             <SignInSide />
           </Route>
-          <Route path="/"  exact={true} >
+          <Route path="/" exact={true} >
             <SignUp />
           </Route>
         </Switch>

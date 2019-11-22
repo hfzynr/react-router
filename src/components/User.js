@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import CardActions from '@material-ui/core/CardActions'
 import Button from '@material-ui/core/Button'
+import { Link }  from 'react-router-dom'
 
 const API_PLACEHOLDER = process.env.REACT_APP_API_PLACEHOLDER
 export default class User extends Component {
@@ -30,28 +31,31 @@ export default class User extends Component {
         return (
             <div
             style={{ display: 'flex', flexWrap:'wrap'}}>
-                {this.state.data.map((item, key) => {
+                {this.state.data.map(({name, username,email,phone,id}, key) => {
                     return (
-                        <div>
+                        <div key={key}>
                             <Card 
-                            style={{ padding:'10px', margin: "10px"}}
-                            key={key}>
+                            style={{ padding:'10px', margin: "10px"}}>
                                 <CardContent>
                                     <Typography variant="h5" component="h2">
-                                        {item.name}
+                                        {name}
                                     </Typography>
                                     <Typography variant="body2" component="p">
-                                        {item.username}
+                                        {username}
                                     </Typography>
                                     <Typography variant="body2" component="p" color="textSecondary">
-                                        Email : {item.email}
+                                        Email : {email}
                                     </Typography>
                                     <Typography variant="body2" component="p" color="textSecondary">
-                                        Phone : {item.phone}
+                                        Phone : {phone}
                                     </Typography>
                                 </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="primary">Write Something...</Button>
+                                        <Button size="small" color="primary"> 
+                                                <Link to={`/user/${id}`}>
+                                                    Post Something..
+                                                </Link>
+                                        </Button>
                                     </CardActions>
                             </Card>
                         </div>

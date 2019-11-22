@@ -40,7 +40,7 @@ return (
         <Tab label="Home" component={Link} to="/home" />
         <Tab label="User" component={Link} to="/user" />
         <Tab label="About" component={Link} to="/about"  />
-        <Tab label="Log Out" component={Link} to="/signup" onClick={logOut}/>
+        <Tab label="Log Out" component={Link} to="/" onClick={logOut}/>
     </Tabs>
     </Paper>
 );
