@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { withRouter } from "react-router-dom";
+import Axios from 'axios'
 
 function Copyright() {
     return (
@@ -158,6 +159,19 @@ function SignUp(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onSubmit={(values, {setSubmitting }) => {
+                Axios
+                .post("http://localhost:3000/ayam", values)
+                .then(response => {
+                    if(response.status === 200) {
+                        localStorage.setItem(
+                            "user",
+                            JSON.stringify(response.data.data)
+                        )
+                        props.history.push("/signin")
+                    }
+                })
+            }}
             >
             Sign Up
             </Button>
